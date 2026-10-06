@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+*.zip
+*.egg-info/
+.venv/
+.pytest_cache/
+build/
+dist/
+runs/
+kci-dev.toml

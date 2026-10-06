@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kci-patchwork"
+version = "0.1.0"
+description = "Test Patchwork series through the kci-dev Python library API"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "kci-dev @ git+https://github.com/kernelci/kci-dev.git@ba6b7134f1296702182b6559b5a2320f3d6b40fa",
+    "requests>=2.32.3,<3",
+    "tomli>=2.2.1; python_version < '3.11'",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.3.3,<9", "black==24.8.0", "isort==5.13.2"]
+
+[project.scripts]
+kci-patchwork = "kci_patchwork.__main__:main"
+
+[project.urls]
+Repository = "https://github.com/aliceinwire/kci-patchwork"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["kci_patchwork*"]
+
+[tool.black]
+target-version = ["py310"]
+
+[tool.isort]
+profile = "black"
+known_first_party = ["kci_patchwork"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
